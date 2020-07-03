@@ -76,6 +76,7 @@ casks=(
   google-chrome
   iterm2
   lastpass
+  nordvpn
   spectacle
   spotify
   visual-studio-code
@@ -102,7 +103,7 @@ done
 echo "Done installing Apps!"
 
 echo "Settings up vim colors.."
-# Setup vim colors
+# Setup vim colors, use sonokai
 mkdir -p ~/.vim/colors
 mkdir -p ~/.vim/autoload/airline/themes/
 mkdir -p ~/.vim/autoload/lightline/colorscheme/
