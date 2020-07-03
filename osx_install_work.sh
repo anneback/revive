@@ -42,6 +42,13 @@ brew install zsh-syntax-highlighting
 brew install fzf
 brew install node
 brew install yarn
+brew install java
+brew install intellij-idea
+brew install jetbrains-toolbox
+brew install gimp
+brew install slack
+brew install sublime-text
+brew install typescript
 
 echo "Cleaning up brew"
 brew cleanup
@@ -79,11 +86,9 @@ casks=(
   google-chrome
   iterm2
   lastpass
-  nordvpn
   spectacle
   spotify
   visual-studio-code
-  vlc
 )
 
 # Install apps to /Applications
