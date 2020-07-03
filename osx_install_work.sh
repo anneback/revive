@@ -56,19 +56,21 @@ brew cleanup
 echo "Installing homebrew cask"
 brew install caskroom/cask/brew-cask
 
-# install fonts
-echo "Installing fonts"
-git clone https://github.com/powerline/fonts.git --depth=1
-# install
-cd fonts
-./install.sh
-# clean-up a bit
-cd ..
-rm -rf fonts
+# Download MesloLGS NF fonts
+echo "Downloading MesloLGS NF fonts..."
+curl -O https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf  ~/Library/Fonts
+curl -O https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf  ~/Library/Fonts
+curl -O https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf  ~/Library/Fonts
+curl -O https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf  ~/Library/Fonts
 
 #Install Zsh & Oh My Zsh
 echo "Installing Oh My ZSH..."
 curl -L http://install.ohmyz.sh | sh
+
+# Install powerline10k theme
+echo "Installing Powerline10k theme..."
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>! ~/.zshrc
 
 echo "Setting up Zsh plugins..."
 cd ~/.oh-my-zsh/custom/plugins
