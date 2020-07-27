@@ -79,6 +79,7 @@ casks=(
   alfred
   diffmerge
   google-chrome
+  istat-menus
   iterm2
   lastpass
   nordvpn
