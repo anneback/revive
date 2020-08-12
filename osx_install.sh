@@ -1,5 +1,6 @@
 #!/bin/sh
-email="jesper.anneback@gmail.com"
+myname="Your name"
+email="your.name@email.com"
 echo "Creating an SSH key for you..."
 ssh-keygen -t rsa -b 4096 -C $email
 # Start the ssh-agent in the background.
@@ -18,6 +19,37 @@ pbcopy < ~/.ssh/id_rsa.pub
 echo "ssh key COPIED TO CLIPBOARD!"
 read -p "Press [Enter] key after this..."
 
+##
+## ZSH config
+##
+# Download MesloLGS NF fonts
+echo "Downloading MesloLGS NF fonts..."
+curl -O https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf  ~/Library/Fonts
+curl -O https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf  ~/Library/Fonts
+curl -O https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf  ~/Library/Fonts
+curl -O https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf  ~/Library/Fonts
+
+#Install Zsh & Oh My Zsh
+echo "Installing Oh My ZSH..."
+curl -L http://install.ohmyz.sh | sh
+
+# Install powerline10k theme
+echo "Installing Powerline10k theme..."
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>! ~/.zshrc
+
+echo "Setting up Zsh plugins..."
+cd ~/.oh-my-zsh/custom/plugins
+git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
+
+### REQUIRES PASSWORD INPUT
+echo "Setting ZSH as shell..."
+chsh -s /bin/zsh
+
+### REQUIRES PASSWORD INPUT
+##
+## HOMEBREW
+##
 # Check for Homebrew,
 # Install if we don't have it
 if test ! $(which brew); then
@@ -32,7 +64,7 @@ brew update
 # Git config
 echo "Git config"
 
-git config --global user.name "Jesper Annebäck"
+git config --global user.name $myname
 git config --global user.email $email
 
 # Installing other brew packages
@@ -108,6 +140,10 @@ done
 
 echo "Done installing Apps!"
 
+##
+## VIM CONFIG
+##
+
 echo "Setting up vim colors..."
 # Setup vim colors, use sonokai
 mkdir -p ~/.vim/colors
@@ -137,6 +173,6 @@ npm install -g n
 echo "Done with npm!"
 
 # cleanup
-ech "Cleaning up the last stuff..."
-brew cleanup --force
+echo "Cleaning up the last stuff..."
+brew cleanup
 rm -f -r /Library/Caches/Homebrew/*

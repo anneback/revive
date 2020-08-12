@@ -1,5 +1,6 @@
 #!/bin/sh
-email="jesper.anneback@gmail.com"
+myname="Your name"
+email="your.name@email.com"
 echo "Creating an SSH key for you..."
 ssh-keygen -t rsa -b 4096 -C $email
 # Start the ssh-agent in the background.
@@ -18,44 +19,9 @@ pbcopy < ~/.ssh/id_rsa.pub
 echo "ssh key COPIED TO CLIPBOARD!"
 read -p "Press [Enter] key after this..."
 
-# Check for Homebrew,
-# Install if we don't have it
-if test ! $(which brew); then
-  echo "Installing homebrew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-fi
-
-# Update homebrew recipes
-echo "Updating homebrew..."
-brew update
-
-# Git config
-echo "Git config"
-
-git config --global user.name "Jesper Annebäck"
-git config --global user.email $email
-
-# Installing other brew packages
-echo "Installing packages..."
-brew install zsh
-brew install zsh-syntax-highlighting
-brew install fzf
-brew install node
-brew install yarn
-brew install java
-brew install intellij-idea
-brew install jetbrains-toolbox
-brew install gimp
-brew install slack
-brew install sublime-text
-brew install typescript
-
-echo "Cleaning up brew"
-brew cleanup
-
-echo "Installing homebrew cask"
-brew install caskroom/cask/brew-cask
-
+##
+## ZSH config
+##
 # Download MesloLGS NF fonts
 echo "Downloading MesloLGS NF fonts..."
 curl -O https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf  ~/Library/Fonts
@@ -76,8 +42,50 @@ echo "Setting up Zsh plugins..."
 cd ~/.oh-my-zsh/custom/plugins
 git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
 
+### REQUIRES PASSWORD INPUT
 echo "Setting ZSH as shell..."
 chsh -s /bin/zsh
+
+### REQUIRES PASSWORD INPUT
+##
+## HOMEBREW
+##
+# Check for Homebrew,
+# Install if we don't have it
+if test ! $(which brew); then
+  echo "Installing homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+fi
+
+# Update homebrew recipes
+echo "Updating homebrew..."
+brew update
+
+# Git config
+echo "Git config"
+
+git config --global user.name $myname
+git config --global user.email $email
+
+# Installing other brew packages
+echo "Installing packages..."
+brew install zsh
+brew install zsh-syntax-highlighting
+brew install fzf
+brew install node
+brew install yarn
+brew install java
+brew install intellij-idea
+brew install jetbrains-toolbox
+brew install slack
+brew install sublime-text
+brew install typescript
+
+echo "Cleaning up brew"
+brew cleanup
+
+echo "Installing homebrew cask"
+brew install caskroom/cask/brew-cask
 
 # Installing applications with cask
 echo "Installing casks..."
@@ -85,6 +93,7 @@ casks=(
   aerial
   alfred
   diffmerge
+  gimp
   google-chrome
   iterm2
   lastpass
@@ -111,6 +120,10 @@ do
 done
 
 echo "Done installing Apps!"
+
+##
+## VIM CONFIG
+##
 
 echo "Setting up vim colors..."
 # Setup vim colors, use sonokai
@@ -142,6 +155,6 @@ npm install -g n
 echo "Done with npm!"
 
 # cleanup
-ech "Cleaning up the last stuff..."
-brew cleanup --force
+echo "Cleaning up the last stuff..."
+brew cleanup
 rm -f -r /Library/Caches/Homebrew/*
