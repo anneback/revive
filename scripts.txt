@@ -9,6 +9,9 @@ alias dedupe='yarn --force && yarn-deduplicate yarn.lock && yarn'
 # dnsflush
 alias dnsflush='sudo killall -HUP mDNSResponder;sleep 2;'
 
+# removes branches locally which is merge or removed
+alias prunegit='git fetch -p && git branch -vv | awk '\''/: gone]/{print $1}'\'' | xargs git branch -d'
+
 ### FUNCTIONS ###
 # list installed java versions
 function jlist() {
