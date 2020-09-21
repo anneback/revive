@@ -37,6 +37,11 @@ curl -L http://install.ohmyz.sh | sh
 echo "Installing Powerline10k theme..."
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>! ~/.zshrc
+# configure your powerline10k 
+p10k configure
+
+echo "p10k is configured, 'p10k configure' to reconfigure"
+read -p "Press [Enter] in you want to continue..."
 
 echo "Setting up Zsh plugins..."
 cd ~/.oh-my-zsh/custom/plugins
