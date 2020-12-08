@@ -97,6 +97,9 @@ echo "Installing casks..."
 casks=(
   aerial
   alfred
+  corretto
+  corretto11
+  corretto8
   diffmerge
   gimp
   google-chrome
