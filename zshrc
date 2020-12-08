@@ -99,13 +99,11 @@ alias dnsflush='sudo killall -HUP mDNSResponder;sleep 2;'
 
 # lists versions of brew packages and lists all version if no input is given
 function brewv() {
-  packs=$(brew list --version -1)
-  casks=$(brew cask list --version -1)
-
-  echo "::PACKAGES::"
-  echo "$packs\n"
-  echo "::CASKS::"
-  echo "$casks"
+  echo "-= DETECTED FORMULAE =-"
+  brew list --formulae --versions
+  echo "\n"
+  echo "-= DETECTED CASKS =-"
+  brew list --casks --versions
 }
 
 # removes branches locally which is merge or removed
@@ -121,16 +119,13 @@ function jlist() {
   /usr/libexec/java_home -V
 }
 
-# Storybook render only subfolder
-story(){
-STORYBOOK_DIRECTORY="$1" yarn dev;
-}
-
 # change java version
 function jversion() {
-  jlist
+  echo "-= DETECTED VERSIONS =-"
+  /usr/libexec/java_home -V
   echo "\n"
   if [ $# -ne 0 ]; then
+    # need to unset first to work with Big Sur
     unset JAVA_HOME
     export JAVA_HOME=$(/usr/libexec/java_home -v $1)
     export PATH=$JAVA_HOME/bin:$PATH
@@ -139,6 +134,15 @@ function jversion() {
   java -version
 
   echo "To select version: jversion <detected version> e.g. 'jversion 1.8' or 'jversion 11'"
+}
+
+function cleanbrew() {
+  brew update && brew upgrade && brew upgrade --cask --greedy && brew cleanup
+}
+
+# Storybook render only subfolder
+story(){
+STORYBOOK_DIRECTORY="$1" yarn dev;
 }
 
 # Yalc build and publish
