@@ -123,6 +123,7 @@ function jlist() {
 
 # change java version
 function jversion() {
+  echo "-= DETECTED VERSIONS =-"
   /usr/libexec/java_home -V
   echo "\n"
   if [ $# -ne 0 ]; then
