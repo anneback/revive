@@ -24,12 +24,22 @@ or for the work setup
    1. Add Font `MesloLGS NF`
    2. Check `Use ligatures`
 
-<img src="images/fonts.png" />
+<img src="images/fonts.png" width="40%" height="40%" />
 
 2. NAVIGATION: Preferences > Profiles > Keys
    1. Under ☸Presets... choose `Natural Text Editing`
 
-<img src="images/natural_text.png" width="50%" height="50%" />
+<img src="images/natural_text.png" width="30%" height="30%" />
+
+3. ITERM NEW WINDOWS/TABS/PANES: Preferences > Profiles
+
+   1. Under **Working directory** check `Advanced Configuration` and press `Edit`
+
+      <img src="images/tabs_profile.png" width="60%" height="60%" />
+
+   2. Check in the behaviour you like
+
+      <img src="images/split_pane.png" width="30%" height="30%" />
 
 ## VSCode
 

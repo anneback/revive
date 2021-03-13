@@ -9,6 +9,9 @@ alias dedupe='yarn --force && yarn-deduplicate yarn.lock && yarn'
 # dnsflush
 alias dnsflush='sudo killall -HUP mDNSResponder;sleep 2;'
 
+# brewrefresh, update, upgrade and cleanup latest version
+alias brewfresh='brew update && brew upgrade && brew cleanup -s'
+
 ### FUNCTIONS ###
 # list installed java versions
 function jlist() {
