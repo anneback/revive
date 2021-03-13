@@ -21,12 +21,13 @@ or for the work setup
 ## iTerm
 
 1. FONTS: Preferences > Profiles > Text
+
    1. Add Font `MesloLGS NF`
    2. Check `Use ligatures`
 
 <img src="images/fonts.png" width="40%" height="40%" />
 
-2. NAVIGATION: Preferences > Profiles > Keys
+1. NAVIGATION: Preferences > Profiles > Keys
    1. Under ☸Presets... choose `Natural Text Editing`
 
 <img src="images/natural_text.png" width="30%" height="30%" />
