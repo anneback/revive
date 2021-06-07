@@ -74,17 +74,17 @@ git config --global user.email $email
 
 # Installing other brew packages
 echo "Installing packages..."
-brew install zsh
-brew install zsh-syntax-highlighting
 brew install fzf
-brew install node
-brew install yarn
-brew install java
 brew install intellij-idea
+brew install java
 brew install jetbrains-toolbox
+brew install node
 brew install slack
 brew install sublime-text
 brew install typescript
+brew install yarn
+brew install zsh
+brew install zsh-syntax-highlighting
 
 echo "Cleaning up brew"
 brew cleanup
@@ -97,14 +97,17 @@ echo "Installing casks..."
 casks=(
   aerial
   alfred
+  camo-studio
   corretto
+  corretto15
   corretto11
   corretto8
   diffmerge
+  firefox
   gimp
-  google-chrome
   iterm2
   lastpass
+  slack
   spectacle
   spotify
   visual-studio-code
