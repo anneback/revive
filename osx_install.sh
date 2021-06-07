@@ -22,12 +22,6 @@ read -p "Press [Enter] key after this..."
 ##
 ## ZSH config
 ##
-# Download MesloLGS NF fonts
-echo "Downloading MesloLGS NF fonts..."
-wget -P ~/Library/Fonts https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
-wget -P ~/Library/Fonts https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
-wget -P ~/Library/Fonts https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
-wget -P ~/Library/Fonts https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
 
 #Install Zsh & Oh My Zsh
 echo "Installing Oh My ZSH..."
@@ -36,7 +30,7 @@ curl -L http://install.ohmyz.sh | sh
 # Install powerline10k theme
 echo "Installing Powerline10k theme..."
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>! ~/.zshrc
+echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
 # configure your powerline10k 
 p10k configure
 
@@ -50,6 +44,9 @@ git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
 ### REQUIRES PASSWORD INPUT
 echo "Setting ZSH as shell..."
 chsh -s /bin/zsh
+
+### REQUIRES PASSWORD INPUT
+sudo xcodebuild -license accept
 
 ### REQUIRES PASSWORD INPUT
 ##
@@ -84,14 +81,7 @@ echo "Cleaning up brew"
 brew cleanup
 
 echo "Installing homebrew cask"
-brew install caskroom/cask/brew-cask
-
-# Download MesloLG NF fonts
-echo "Downloading MesloLG NF fonts..."
-curl -O https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf  ~/Library/Fonts
-curl -O https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf  ~/Library/Fonts
-curl -O https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf  ~/Library/Fonts
-curl -O https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf  ~/Library/Fonts
+brew install homebrew/cask
 
 # Install Zsh & Oh My Zsh
 echo "Installing Oh My ZSH..."
@@ -100,14 +90,11 @@ curl -L http://install.ohmyz.sh | sh
 # Install powerline10k theme
 echo "Installing Powerline10k theme..."
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>! ~/.zshrc
+echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
 
 echo "Setting up Zsh plugins..."
 cd ~/.oh-my-zsh/custom/plugins
 git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
-
-echo "Setting ZSH as shell..."
-chsh -s /bin/zsh
 
 # Installing applications with cask
 echo "Installing casks..."
@@ -131,13 +118,13 @@ echo "Installing Apps in /usr/local/Caskroom..."
 
 for cask in ${casks[@]}
 do
-    version=$(brew cask info $cask | sed -n "s/$cask:\ \(.*\)/\1/p")
+    version=$(brew info $cask | sed -n "s/$cask:\ \(.*\)/\1/p")
     installed=$(find "/usr/local/Caskroom/$cask" -type d -maxdepth 1 -maxdepth 1 -name "$version")
 
     if [[ -z $installed ]]; then
         echo "${red}${cask}${reset} requires ${red}update${reset}."
-        (set -x; brew cask uninstall $cask --force;)
-        (set -x; brew cask install $cask --force;)
+        (set -x; brew uninstall $cask --force;)
+        (set -x; brew install $cask --force;)
     else
         echo "${red}${cask}${reset} is ${green}up-to-date${reset}."
     fi

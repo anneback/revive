@@ -30,7 +30,7 @@ curl -L http://install.ohmyz.sh | sh
 # Install powerline10k theme
 echo "Installing Powerline10k theme..."
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>! ~/.zshrc
+echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
 # configure your powerline10k 
 p10k configure
 
@@ -44,6 +44,9 @@ git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
 ### REQUIRES PASSWORD INPUT
 echo "Setting ZSH as shell..."
 chsh -s /bin/zsh
+
+### REQUIRES PASSWORD INPUT
+sudo xcodebuild -license accept
 
 ### REQUIRES PASSWORD INPUT
 ##
@@ -84,7 +87,7 @@ echo "Cleaning up brew"
 brew cleanup
 
 echo "Installing homebrew cask"
-brew install caskroom/cask/brew-cask
+brew install homebrew/cask
 
 # Installing applications with cask
 echo "Installing casks..."
@@ -112,13 +115,13 @@ echo "Installing Apps in /usr/local/Caskroom..."
 
 for cask in ${casks[@]}
 do
-    version=$(brew cask info $cask | sed -n "s/$cask:\ \(.*\)/\1/p")
+    version=$(brew info $cask | sed -n "s/$cask:\ \(.*\)/\1/p")
     installed=$(find "/usr/local/Caskroom/$cask" -type d -maxdepth 1 -maxdepth 1 -name "$version")
 
     if [[ -z $installed ]]; then
         echo "${red}${cask}${reset} requires ${red}update${reset}."
-        (set -x; brew cask uninstall $cask --force;)
-        (set -x; brew cask install $cask --force;)
+        (set -x; brew uninstall $cask --force;)
+        (set -x; brew install $cask --force;)
     else
         echo "${red}${cask}${reset} is ${green}up-to-date${reset}."
     fi
