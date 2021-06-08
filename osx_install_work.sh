@@ -89,6 +89,9 @@ brew cleanup
 echo "Installing homebrew cask"
 brew install homebrew/cask
 
+# Installing cask-versions to get older version of e.g. corretto
+brew tap homebrew/cask-versions
+
 # Installing applications with cask
 echo "Installing casks..."
 casks=(
