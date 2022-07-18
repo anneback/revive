@@ -72,12 +72,7 @@ git config --global user.email $email
 # Installing other brew packages
 echo "Installing packages..."
 brew install fzf
-brew install intellij-idea
-brew install java
-brew install jetbrains-toolbox
 brew install node
-brew install slack
-brew install sublime-text
 brew install typescript
 brew install yarn
 brew install zsh
@@ -98,17 +93,11 @@ casks=(
   aerial
   alfred
   camo-studio
-  corretto
-  corretto15
-  corretto11
-  corretto8
-  diffmerge
-  firefox
-  gimp
+  google-chrome
   iterm2
   lastpass
+  rectangle
   slack
-  spectacle
   spotify
   visual-studio-code
 )

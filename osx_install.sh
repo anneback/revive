@@ -75,6 +75,7 @@ brew install zsh
 brew install zsh-syntax-highlighting
 brew install fzf
 brew install node
+brew install typescript
 brew install yarn
 
 echo "Cleaning up brew"
@@ -101,13 +102,15 @@ echo "Installing casks..."
 casks=(
   aerial
   alfred
+  camo-studio
   diffmerge
   google-chrome
   istat-menus
   iterm2
   lastpass
   nordvpn
-  spectacle
+  rectangle
+  slack
   spotify
   visual-studio-code
   vlc

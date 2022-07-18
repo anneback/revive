@@ -50,11 +50,16 @@ or for the work setup
 
 2. Plugins
 
-- Atom One Dark Theme
+- Atom One Dark Pro
 - change-case
+- Error Lens
 - ESList
+- GitLens
 - Material Icon Theme
 - Prettier
+- Syntax Highlighting for yarn.lock
+- TODO highlight
+- vscode-icons
 
 ## Creds to
 
