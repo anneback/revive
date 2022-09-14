@@ -19,8 +19,6 @@ pbcopy < ~/.ssh/id_rsa.pub
 echo "ssh key COPIED TO CLIPBOARD!"
 read -p "Press [Enter] key after this..."
 
-
-
 ### REQUIRES PASSWORD INPUT
 ##
 ## HOMEBREW
@@ -48,14 +46,26 @@ brew install git
 ## ZSH config
 ##
 
+## Install MesloLGS NF fonts
+## NEEDS password
+sudo cp -vf ../fonts/MesloLGS\ NF\ Bold.ttf /Library/Fonts
+sudo cp -vf ../fonts/MesloLGS\ NF\ Bold\ Italic.ttf /Library/Fonts
+sudo cp -vf ../fonts/MesloLGS\ NF\ Italic.ttf /Library/Fonts
+sudo cp -vf ../fonts/MesloLGS\ NF\ Regular.ttf /Library/Fonts
+
+echo "Install MesloLGS NF fonts"
+read -p "Press [Enter] to continue..."
+
 #Install Zsh & Oh My Zsh
 echo "Installing Oh My ZSH..."
 curl -L http://install.ohmyz.sh | sh
 
+## copy zshrc
+cp .zshrc ~/.zshrc
+
 # Install powerline10k theme
 echo "Installing Powerline10k theme..."
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
 # configure your powerline10k 
 p10k configure
 
@@ -81,11 +91,29 @@ git config --global user.email $email
 
 # Installing other brew packages
 echo "Installing packages..."
-brew install fzf
-brew install node
-brew install typescript
-brew install yarn
-brew install zsh
+packages=(
+  fzf
+  node
+  typescript
+  yarn
+  zsh
+)
+
+echo "Installing Apps in /opt/homebrew/Cellar..."
+
+for package in ${packages[@]}
+do
+    version=$(brew info $package | sed -n "s/$package:\ \(.*\)/\1/p")
+    installed=$(find "/opt/homebrew/Cellar/$package" -type d -maxdepth 1 -maxdepth 1 -name "$version")
+
+    if [[ -z $installed ]]; then
+        echo "${red}${package}${reset} requires ${red}update${reset}."
+        (set -x; brew uninstall $package --force;)
+        (set -x; brew install $package --force;)
+    else
+        echo "${red}${package}${reset} is ${green}up-to-date${reset}."
+    fi
+done
 
 echo "Cleaning up brew"
 brew cleanup
@@ -112,12 +140,12 @@ casks=(
 )
 
 # Install apps to /Applications
-echo "Installing Apps in /usr/local/Caskroom..."
+echo "Installing Apps in /opt/homebrew/Caskroom..."
 
 for cask in ${casks[@]}
 do
     version=$(brew info $cask | sed -n "s/$cask:\ \(.*\)/\1/p")
-    installed=$(find "/usr/local/Caskroom/$cask" -type d -maxdepth 1 -maxdepth 1 -name "$version")
+    installed=$(find "/opt/homebrew/Caskroom/$cask" -type d -maxdepth 1 -maxdepth 1 -name "$version")
 
     if [[ -z $installed ]]; then
         echo "${red}${cask}${reset} requires ${red}update${reset}."
@@ -148,15 +176,6 @@ touch ~/.vimrc
 echo "\" important!!\nset termguicolors\n\nsyntax enable\n\n\" the configuration options should be placed before `colorscheme sonokai`\n\nlet g:sonokai_style = 'andromeda'\nlet g:sonokai_enable_italic = 1\nlet g:sonokai_disable_italic_comment = 1\n\ncolorscheme sonokai" >> ~/.vimrc
 
 echo "Done with vim colors config!"
-
-# adds start script for zsh-syntax-highlighting
-echo "# start zsh-syntax-highlighting\nsource /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
-
-echo "Installing yarn global packages..."
-# Yarn
-yarn global add yarn-deduplicate
-
-echo "Done with yarn!"
 
 echo "Installing npm global packages..."
 # NPM
