@@ -1,6 +1,6 @@
 #!/bin/sh
-myname="Your name"
-email="your.name@email.com"
+myname="Jesper Annebäck"
+email="jesper.anneback@gmail.com"
 echo "Creating an SSH key for you..."
 ssh-keygen -t rsa -b 4096 -C $email
 # Start the ssh-agent in the background.
@@ -18,6 +18,31 @@ echo "https://github.com/account/ssh \n"
 pbcopy < ~/.ssh/id_rsa.pub
 echo "ssh key COPIED TO CLIPBOARD!"
 read -p "Press [Enter] key after this..."
+
+
+
+### REQUIRES PASSWORD INPUT
+##
+## HOMEBREW
+##
+# Check for Homebrew,
+# Install if we don't have it
+if test ! $(which brew); then
+  echo "Installing homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+fi
+
+# Update homebrew recipes
+echo "Updating homebrew..."
+brew update
+
+##
+## Git
+##
+
+echo "Installing Git..."
+
+brew install git
 
 ##
 ## ZSH config
@@ -48,21 +73,6 @@ chsh -s /bin/zsh
 ### REQUIRES PASSWORD INPUT
 sudo xcodebuild -license accept
 
-### REQUIRES PASSWORD INPUT
-##
-## HOMEBREW
-##
-# Check for Homebrew,
-# Install if we don't have it
-if test ! $(which brew); then
-  echo "Installing homebrew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-fi
-
-# Update homebrew recipes
-echo "Updating homebrew..."
-brew update
-
 # Git config
 echo "Git config"
 
@@ -76,7 +86,6 @@ brew install node
 brew install typescript
 brew install yarn
 brew install zsh
-brew install zsh-syntax-highlighting
 
 echo "Cleaning up brew"
 brew cleanup
@@ -131,6 +140,7 @@ mkdir -p ~/.vim/colors
 mkdir -p ~/.vim/autoload/airline/themes/
 mkdir -p ~/.vim/autoload/lightline/colorscheme/
 curl https://raw.githubusercontent.com/sainnhe/sonokai/master/colors/sonokai.vim >> ~/.vim/colors/sonokai.vim
+curl https://raw.githubusercontent.com/sainnhe/sonokai/master/autoload/sonokai.vim >> ~/.vim/autoload/sonokai.vim
 curl https://raw.githubusercontent.com/sainnhe/sonokai/master/autoload/airline/themes/sonokai.vim >> ~/.vim/autoload/airline/themes/sonokai.vim
 curl https://raw.githubusercontent.com/sainnhe/sonokai/master/autoload/lightline/colorscheme/sonokai.vim >> ~/.vim/autoload/lightline/colorscheme/sonokai.vim
 
@@ -153,6 +163,12 @@ echo "Installing npm global packages..."
 npm install -g n
 
 echo "Done with npm!"
+
+# set screenshot location
+mkdir ~/Pictures/Screenshots
+
+defaults write com.apple.iphonesimulator "ScreenShotSaveLocation" -string "~/Pictures/Screenshots"
+defaults write com.apple.screencapture location -string "~/Pictures/Screenshots"
 
 # cleanup
 echo "Cleaning up the last stuff..."

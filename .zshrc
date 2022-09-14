@@ -5,27 +5,48 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-#Path to your oh-my-zsh installation.
-export ZSH=/Users/jesann/.oh-my-zsh
+# If you come from bash you might have to change your $PATH.
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-# ZSH_THEME="powerlevel9k/powerlevel9k"
+## ANDROID
+export ANDROID_HOME=/Users/anneback001/Library/Android/sdk
+[ -d "$HOME/Library/Android/sdk" ] && ANDROID_HOME=$HOME/Library/Android/sdk || ANDROID_HOME=$HOME/Android/Sdk
+export ANDROID_HOME=$ANDROID_HOME
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -37,6 +58,9 @@ export ZSH=/Users/jesann/.oh-my-zsh
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -46,27 +70,30 @@ export ZSH=/Users/jesann/.oh-my-zsh
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
-
-# User configuration
-
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
 # You may need to manually set your language environment
-export LANG=en_US.UTF-8
+# export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -78,102 +105,49 @@ export LANG=en_US.UTF-8
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-
-alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
-alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
-
-alias links='ll node_modules | grep '\''>'\'
-
-alias dedupe='yarn --force && yarn-deduplicate yarn.lock && yarn'
-
-# dnsflush
-alias dnsflush='sudo killall -HUP mDNSResponder;sleep 2;'
-
-# lists versions of brew packages and lists all version if no input is given
-function brewv() {
-  packs=$(brew list --version -1)
-  casks=$(brew cask list --version -1)
-
-  echo "::PACKAGES::"
-  echo "$packs\n"
-  echo "::CASKS::"
-  echo "$casks"
-}
-
-# removes branches locally which is merge or removed
-function prunegit() {
-  git fetch --all --prune && git checkout master && git branch --merged | grep -v master | xargs git branch -d
-}
-
-export PATH="/usr/local/sbin:$PATH"
-
-# list installed java versions
-function jlist() {
-  echo "-= DETECTED VERSIONS =-"
-  /usr/libexec/java_home -V
-}
-
-# change java version
-function jversion() {
-  echo "-= DETECTED VERSIONS =-"
-  /usr/libexec/java_home -V
-  echo "\n"
-  if [ $# -ne 0 ]; then
-    # need to unset first to work with Big Sur
-    unset JAVA_HOME
-    export JAVA_HOME=$(/usr/libexec/java_home -v $1)
-    export PATH=$JAVA_HOME/bin:$PATH
-  fi
-  echo "-= YOUR JAVA VERSION IS NOW =-"
-  java -version
-
-  echo "To select version: jversion <detected version> e.g. 'jversion 1.8' or 'jversion 11'"
-}
-
-# Storybook render only subfolder
-story(){
-STORYBOOK_DIRECTORY="$1" yarn dev;
-}
-
-# Yalc build and publish
-yalci(){
-  cd ../../;
-  yarn build && cd - && yalc publish;
-}
-
-# get pid
-function pidport() {
-    get_pid=$(lsof -t -i :$1)
-    echo "Your process id (pid) on port $1 is: $get_pid"
-}
-
-# kill process on port
-function killport() {
-    read "REPLY?Kill process on port $1? [y/N]: "
-    if [[ $REPLY =~ ^[Yy]$ ]]
-    then 
-       kill -9 $(lsof -t -i :$1)
-       echo "-=! KILLED PROCCESS ON PORT [[$1]] !=-"
-    fi
-}
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export PATH="/usr/local/opt/erlang@21/bin:$PATH"
-
-## zsh-syntax-highlighting must be last
-source /Users/jesann/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-ZSH_HIGHLIGHT_PATTERNS=('rm -rf *' 'fg=white,bold,bg=red')
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/powerlevel10k/powerlevel10k.zsh-theme
+# start zsh-syntax-highlighting
+#source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# ALiases
+function killport() { lsof -i TCP:$1 | grep LISTEN | awk '{print $2}' | xargs kill -9 }
+
+## m1 brew path
+export PATH=/opt/homebrew/bin:$PATH
+
+## Java
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+function jversion () {
+  export JAVA_HOME=`/usr/libexec/java_home -v $@`
+  echo "JAVA_HOME:" $JAVA_HOME
+  echo "java -version:"
+  java -version
+}
+
+function javalist () {
+  echo "--== Versions available ==--"
+  /usr/libexec/java_home -V
+}
+
+## nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+source /Users/anneback001/dev/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
