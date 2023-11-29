@@ -1,0 +1,62 @@
+{
+	// Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+
+		"Jest test": {
+		"scope": "javascript, typescript, typescriptreact",
+		"prefix": "jtest",
+		"body": [
+			"// import * as NamedImport from '@/someImport';",
+			"import $1 from '@/newComponents/$1/$1';",
+			"import { create, act } from '@test/test-utils';",
+			"",
+			"// test mock",
+			"// jest.mock('@/components/Button/Button', () => '<Button />');",
+			"",
+			"// spy",
+			"// const someSpy = jest.spyOn(NamedImport, 'someFunction');"
+			"",
+			"// Mock rtk endpoint",
+			"// beforeEach(() => {",
+			"//   (jest.spyOn(localeApi, 'useGetRTK') as jest.Mock).mockReturnValueOnce({",
+			"//		  data: {},",
+			"//	  });",
+			"// });",
+			"",
+			"describe('$1',() => {",
+			"  describe('when',() => {",
+			"    it('should',() => {",
+			"",
+			"      const component = create(<$1 />, $2, $3);",
+			"",
+			"      const actual = component.root.findAllByType(SomeChildComponent);",
+			"",
+			"      act(() => {",
+			"        // click that changes the component state"
+			"        component.props.onClick();",
+			"      });",
+			"",
+			"    expect(actual).toBe(true);",
+			"//  expect(someSpy).toHaveBeenCalled();",
+			"//  expect(someSpy).toHaveBeenCalledTimes(1);",
+			"    });",
+			"  });",
+			"});",
+		],
+		"description": "Generates a jest test. Input: name: ComponentName, hasRedux?: boolean, state?: {}"
+	}
+}
