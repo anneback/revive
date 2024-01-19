@@ -63,6 +63,9 @@ curl -L http://install.ohmyz.sh | sh
 ## copy zshrc
 cp .zshrc ~/.zshrc
 
+# M1 needs brew in /opt
+echo 'export PATH=/opt/homebrew/bin:$PATH' >> ~/.zshrc
+
 # Install powerline10k theme
 echo "Installing Powerline10k theme..."
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
@@ -127,11 +130,11 @@ brew tap homebrew/cask-versions
 # Installing applications with cask
 echo "Installing casks..."
 casks=(
-  aerial
   alfred
   camo-studio
   google-chrome
   iterm2
+  headlamp
   lastpass
   rectangle
   slack

@@ -63,6 +63,9 @@ fi
 echo "Updating homebrew..."
 brew update
 
+# M1 needs brew in /opt
+echo 'export PATH=/opt/homebrew/bin:$PATH' >> ~/.zshrc
+
 # Git config
 echo "Git config"
 
@@ -117,12 +120,12 @@ casks=(
 )
 
 # Install apps to /Applications
-echo "Installing Apps in /usr/local/Caskroom..."
+echo "Installing Apps in /opt/local/Caskroom..."
 
 for cask in ${casks[@]}
 do
     version=$(brew info $cask | sed -n "s/$cask:\ \(.*\)/\1/p")
-    installed=$(find "/usr/local/Caskroom/$cask" -type d -maxdepth 1 -maxdepth 1 -name "$version")
+    installed=$(find "/opt/homebrew/Caskroom/$cask" -type d -maxdepth 1 -maxdepth 1 -name "$version")
 
     if [[ -z $installed ]]; then
         echo "${red}${cask}${reset} requires ${red}update${reset}."
