@@ -2,18 +2,24 @@
 
 Shell script of installing my necessary stuff.
 
-**Feel free to clone and make up your own version, and also feel free to credit me in your README.md** 😊
+**Feel free to clone and make up your own version** 😊
+
+```bash
+git clone git@github.com:anneback/revive.git
+```
 
 # Run script
 
-```
-> ./osx_install.sh
+```bash
+cd ~/dev/revive
+./osx_install.sh
 ```
 
 or for the work setup
 
-```
-> ./osx_install_work.sh
+```bash
+cd ~/dev/revive
+./osx_install_work.sh
 ```
 
 # Stuff to do after running script
@@ -32,7 +38,7 @@ or for the work setup
 
 <img src="images/natural_text.png" width="30%" height="30%" />
 
-3. ITERM NEW WINDOWS/TABS/PANES: Preferences > Profiles
+2. ITERM NEW WINDOWS/TABS/PANES: Preferences > Profiles
 
    1. Under **Working directory** check `Advanced Configuration` and press `Edit`
 
@@ -53,13 +59,15 @@ or for the work setup
 - Atom One Dark Pro
 - change-case
 - Error Lens
-- ESList
+- ESLint
 - GitLens
+- Import Cost
 - Material Icon Theme
 - Prettier
 - Syntax Highlighting for yarn.lock
 - TODO highlight
 - vscode-icons
+- vscode-styled-components
 
 ## Creds to
 
