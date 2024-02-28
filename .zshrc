@@ -141,6 +141,16 @@ function javalist () {
   /usr/libexec/java_home -V
 }
 
+function brewv()
+{
+	packs=$(brew list --versions -1)
+	casks=$(brew cask list --versions -1)
+	echo "::Packages::"
+	echo "$packs\n"
+	echo "::Casks::"
+	echo $casks
+}
+
 ########################## FINAL STUFF ##########################
 
 # zsh-syntax-highlighting
@@ -148,3 +158,14 @@ source /Users/anneback001/dev/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# bun completions
+[ -s "/Users/jesann/.bun/_bun" ] && source "/Users/jesann/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

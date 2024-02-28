@@ -1,6 +1,6 @@
 #!/bin/sh
-myname="Jesper Annebäck"
-email="jesper.anneback@gmail.com"
+myname="Firstname Lastname"
+email="name@gmail.com"
 echo "Creating an SSH key for you..."
 ssh-keygen -t rsa -b 4096 -C $email
 # Start the ssh-agent in the background.
@@ -98,7 +98,6 @@ packages=(
   fzf
   node
   typescript
-  yarn
   zsh
 )
 
@@ -129,17 +128,19 @@ brew tap homebrew/cask-versions
 
 # Installing applications with cask
 echo "Installing casks..."
+
+# NTH: istat-menus, nordvpn, vlc
 casks=(
+  1password
   alfred
   camo-studio
+  cursor
   google-chrome
   iterm2
   headlamp
-  lastpass
   rectangle
   slack
   spotify
-  visual-studio-code
 )
 
 # Install apps to /Applications

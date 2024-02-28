@@ -12,13 +12,6 @@ git clone git@github.com:anneback/revive.git
 
 ```bash
 cd ~/dev/revive
-./osx_install.sh
-```
-
-or for the work setup
-
-```bash
-cd ~/dev/revive
 ./osx_install_work.sh
 ```
 
@@ -48,25 +41,27 @@ cd ~/dev/revive
 
       <img src="images/split_pane.png" width="30%" height="30%" />
 
-## VSCode
+## Editor
 
 1. `cmd + shift + p` search `SHELL`
 
-<img src="images/vscode_shell.png" width="60%" height="60%" />
+   ```
+   Shell Command: Install 'code' command in PATH
+   ```
 
 2. Plugins
 
-- Atom One Dark Pro
 - change-case
 - Error Lens
 - ESLint
 - GitLens
 - Import Cost
 - Material Icon Theme
+- One Dark Pro
 - Prettier
+- Prettify JSON
 - Syntax Highlighting for yarn.lock
 - TODO highlight
-- vscode-icons
 - vscode-styled-components
 
 ## Creds to
