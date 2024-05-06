@@ -43,15 +43,21 @@ echo "Installing Git..."
 brew install git
 
 ##
+## NVM
+##
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+##
 ## ZSH config
 ##
 
 ## Install MesloLGS NF fonts
 ## NEEDS password
-sudo cp -vf ../fonts/MesloLGS\ NF\ Bold.ttf /Library/Fonts
-sudo cp -vf ../fonts/MesloLGS\ NF\ Bold\ Italic.ttf /Library/Fonts
-sudo cp -vf ../fonts/MesloLGS\ NF\ Italic.ttf /Library/Fonts
-sudo cp -vf ../fonts/MesloLGS\ NF\ Regular.ttf /Library/Fonts
+sudo cp -vf ./fonts/MesloLGS\ NF\ Bold.ttf /Library/Fonts
+sudo cp -vf ./fonts/MesloLGS\ NF\ Bold\ Italic.ttf /Library/Fonts
+sudo cp -vf ./fonts/MesloLGS\ NF\ Italic.ttf /Library/Fonts
+sudo cp -vf ./fonts/MesloLGS\ NF\ Regular.ttf /Library/Fonts
 
 echo "Install MesloLGS NF fonts"
 read -p "Press [Enter] to continue..."
@@ -96,9 +102,6 @@ git config --global user.email $email
 echo "Installing packages..."
 packages=(
   fzf
-  node
-  typescript
-  zsh
 )
 
 echo "Installing Apps in /opt/homebrew/Cellar..."
