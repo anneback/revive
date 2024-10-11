@@ -26,8 +26,8 @@ cd ~/dev/revive
 
 <img src="images/fonts.png" width="40%" height="40%" />
 
-1. NAVIGATION: Preferences > Profiles > Keys
-   1. Under ☸Presets... choose `Natural Text Editing`
+1. NAVIGATION: Preferences > Profiles > Keys > Key Mappings
+   1. Scroll down and click ☸Presets... choose `Natural Text Editing`
 
 <img src="images/natural_text.png" width="30%" height="30%" />
 
