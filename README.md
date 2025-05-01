@@ -17,21 +17,21 @@ cd ~/dev/revive
 
 # Stuff to do after running script
 
-## iTerm
+## iTerm2
 
-1. FONTS: Preferences > Profiles > Text
+1. **FONTS**: `Preferences > Profiles > Text`
 
    1. Add Font `MesloLGS NF`
    2. Check `Use ligatures`
 
 <img src="images/fonts.png" width="40%" height="40%" />
 
-1. NAVIGATION: Preferences > Profiles > Keys > Key Mappings
+1. **NAVIGATION**: Preferences > Profiles > Keys > Key Mappings
    1. Scroll down and click ☸Presets... choose `Natural Text Editing`
 
 <img src="images/natural_text.png" width="30%" height="30%" />
 
-2. ITERM NEW WINDOWS/TABS/PANES: Preferences > Profiles
+2. **ITERM NEW WINDOWS/TABS/PANES**: Preferences > Profiles
 
    1. Under **Working directory** check `Advanced Configuration` and press `Edit`
 
@@ -51,18 +51,13 @@ cd ~/dev/revive
 
 2. Plugins
 
-- change-case
-- Error Lens
 - ESLint
 - GitLens
-- Import Cost
 - Material Icon Theme
 - One Dark Pro
 - Prettier
 - Prettify JSON
-- Syntax Highlighting for yarn.lock
 - TODO highlight
-- vscode-styled-components
 
 ## Creds to
 

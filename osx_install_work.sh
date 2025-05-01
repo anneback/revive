@@ -132,18 +132,17 @@ brew tap homebrew/cask-versions
 # Installing applications with cask
 echo "Installing casks..."
 
-# NTH: istat-menus, nordvpn, vlc
+# NTH: headlamp, cursor, istat-menus, nordvpn, vlc
 casks=(
   1password
   alfred
   camo-studio
-  cursor
   google-chrome
   iterm2
-  headlamp
   rectangle
   slack
   spotify
+  visual-studio-code
 )
 
 # Install apps to /Applications
