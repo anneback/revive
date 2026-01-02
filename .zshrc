@@ -62,15 +62,15 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 export PATH=/opt/homebrew/bin:$PATH
 
 ########################## JAVA ##########################
-export JAVA_HOME=$(/usr/libexec/java_home)
-export PATH="$JAVA_HOME/bin:$PATH"
+# export JAVA_HOME=$(/usr/libexec/java_home)
+# export PATH="$JAVA_HOME/bin:$PATH"
 
-function jversion () {
-  export JAVA_HOME=`/usr/libexec/java_home -v $@`
-  echo "JAVA_HOME:" $JAVA_HOME
-  echo "java -version:"
-  java -version
-}
+# function jversion () {
+#   export JAVA_HOME=`/usr/libexec/java_home -v $@`
+#   echo "JAVA_HOME:" $JAVA_HOME
+#   echo "java -version:"
+#   java -version
+# }
 
 ########################## ANDROID ##########################
 export ANDROID_HOME=$HOME/Library/Android/sdk
@@ -81,9 +81,9 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 
 ########################## PYENV ##########################
-export PYENV_ROOT=$HOME/.pyenv
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# export PYENV_ROOT=$HOME/.pyenv
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
 
 ########################## RUBY ##########################
 if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
@@ -153,9 +153,6 @@ function brewv()
 
 ########################## FINAL STUFF ##########################
 
-# zsh-syntax-highlighting
-source /Users/anneback001/dev/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -164,8 +161,12 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # bun completions
-[ -s "/Users/jesann/.bun/_bun" ] && source "/Users/jesann/.bun/_bun"
+[ -s "~/.bun/_bun" ] && source "~/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# source /opt/homebrew/Cellar/zsh-syntax-highlighting/0.8.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
