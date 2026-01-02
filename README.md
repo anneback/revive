@@ -56,7 +56,7 @@ cd ~/dev/revive
 - Material Icon Theme
 - One Dark Pro
 - Prettier
-- Prettify JSON
+- Tailwind CSS IntelliSense
 - TODO highlight
 
 ## Creds to
