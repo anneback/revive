@@ -145,6 +145,13 @@ do
     fi
 done
 
+if [[ -d "/opt/homebrew/Cellar/fzf" ]]; then
+  echo "${green}Fzf already exists, skipping...${reset}"
+else
+  echo "Installing fzf into shell"
+  source <(fzf --zsh)
+fi
+
 echo "Cleaning up brew"
 brew cleanup
 
